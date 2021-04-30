@@ -42,7 +42,7 @@ namespace Hover_Distance_Limiter
 
         public IDeviceReport Filter(IDeviceReport input) => Hover_Distance(input);
 
-        public PipelinePosition Position => PipelinePosition.PostTransform;
+        public PipelinePosition Position => PipelinePosition.PreTransform;
 
         [Property("Minimum Hover Distance"), DefaultPropertyValue(0f), ToolTip
             ("Hover Distance Limiter:\n\n" +
