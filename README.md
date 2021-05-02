@@ -17,4 +17,4 @@ Limits minimum and maximum hover distance.
 - Put your pen within detection range of your tablet
 - The `Tablet Report` box will show `HoverDistance` or `ReportID` which is the raw value for each.
 
-    (If a `HoverDistance` is not shown, the current tablet is not compatible with the default method. Enabling **Use ReportID Workaround** and using `ReportID` values will work on some tablets.)
+    (If a `HoverDistance` is not shown, your tablet is not compatible with the default filtering method. Enabling **Use ReportID Workaround** and using `ReportID` values can be used on some tablets which do not send `HoverDistance`.)
