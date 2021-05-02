@@ -10,20 +10,41 @@ namespace Hover_Distance_Limiter
     {
         public IDeviceReport Hover_Distance(IDeviceReport input)
         {
-            if (input is IProximityReport tabletReport)
+            if (!ReportID)
             {
-                if (tabletReport.HoverDistance >= Hover_min && tabletReport.HoverDistance <= Hover_max)
+                if (input is IProximityReport tabletReport)
                 {
-                    return input;
+                    if (tabletReport.HoverDistance >= Hover_min && tabletReport.HoverDistance <= Hover_max)
+                    {
+                        return input;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
-                    return null;
+                    return input;
                 }
             }
             else
             {
-                return input;
+                if (input is ITabletReport tabletReport)
+                {
+                    if (tabletReport.ReportID >= Hover_min && tabletReport.ReportID <= Hover_max)
+                    {
+                        return input;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return input;
+                }
             }
         }
 
@@ -31,11 +52,8 @@ namespace Hover_Distance_Limiter
 
         public void Consume(IDeviceReport value)
         {
-            if (value is IProximityReport report)
-            {
-                report = (IProximityReport)Filter(report);
-                value = report;
-            }
+            IDeviceReport report = Filter(value);
+            value = report;
 
             Emit?.Invoke(value);
         }
@@ -46,14 +64,23 @@ namespace Hover_Distance_Limiter
 
         [Property("Minimum Hover Distance"), DefaultPropertyValue(0f), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Minimum Hover Distance: The minimum raw hover distance where input will be sent.\n\n" +
-            "(Raw hover distance values can be found in the tablet debugger for supported tablets.)")]
+            "Minimum Hover Distance: The minimum HoverDistance where input is sent.\n" +
+            "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
+            "(HoverDistance values can be found in the tablet debugger for supported tablets.)")]
         public float Hover_min { set; get; }
 
         [Property("Maximum Hover Distance"), DefaultPropertyValue(63f), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Maximum Hover Distance: The maximum raw hover distance where input will be sent.\n\n" +
-            "(Raw hover distance values can be found in the tablet debugger for supported tablets.)")]
+            "Maximum Hover Distance: The maximum raw hover distance where input will be sent.\n" +
+            "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
+            "(HoverDistance values can be found in the tablet debugger for supported tablets.)")]
         public float Hover_max { set; get; }
+
+        [BooleanProperty("Use ReportID Workaround", ""), ToolTip
+            ("Hover Distance Limiter:\n\n" +
+            "Use ReportID Workaround: Uses ReportID to filter input instead of raw hover distance values.\n\n" +
+            "Many tablets do not send raw hover distance but will send general pen detection strength readings which can be used to limit hover distance.\n\n" +
+            "(ReportID values can be found in the tablet debugger)")]
+        public bool ReportID { set; get; }
     }
 }

@@ -4,15 +4,17 @@ Limits minimum and maximum hover distance.
 
 ## Explanation of the values:
 
-**Minimum Hover Distance:** The minimum raw hover distance where input will be sent.
+**Minimum Hover Distance:** The minimum HoverDistance where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
 
-**Maximum Hover Distance:** The maximum raw hover distance where input will be sent.
+**Maximum Hover Distance:** The maximum HoverDistance where input is be sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
+
+**Use ReportID Workaround:** Uses ReportID to filter input instead of raw hover distance values. Many tablets do not send raw hover distance but will send general pen detection strength readings which can be used to limit hover distance.
 
 <br>
 
-## How to find raw hover distance:
+## How to find HoverDistance or ReportID:
 - Open tablet debugger by going to `Tablets > Tablet debugger...`
-- Put your pen within detection range of tablet
-- The `Tablet Report` box will show `HoverDistance` which is the raw hover distance.
+- Put your pen within detection range of your tablet
+- The `Tablet Report` box will show `HoverDistance` or `ReportID` which is the raw value for each.
 
-    (If a `HoverDistance` does not show in the debugger that means your tablet is not compatible.)
+    (If a `HoverDistance` is not shown, the current tablet is not compatible with the default method. Enabling **Use ReportID Workaround** and using `ReportID` values will work on some tablets.)
