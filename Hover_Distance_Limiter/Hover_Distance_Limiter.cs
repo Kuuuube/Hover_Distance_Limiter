@@ -66,20 +66,20 @@ namespace Hover_Distance_Limiter
             ("Hover Distance Limiter:\n\n" +
             "Minimum Hover Distance: The minimum HoverDistance where input is sent.\n" +
             "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
-            "(HoverDistance values can be found in the tablet debugger for supported tablets.)")]
+            "(HoverDistance and ReportID values can be found in the tablet debugger for supported tablets.)")]
         public float Hover_min { set; get; }
 
         [Property("Maximum Hover Distance"), DefaultPropertyValue(63f), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Maximum Hover Distance: The maximum raw hover distance where input will be sent.\n" +
+            "Maximum Hover Distance: The maximum HoverDistance where input is sent.\n" +
             "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
-            "(HoverDistance values can be found in the tablet debugger for supported tablets.)")]
+            "(HoverDistance and ReportID values can be found in the tablet debugger for supported tablets.)")]
         public float Hover_max { set; get; }
 
         [BooleanProperty("Use ReportID Workaround", ""), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Use ReportID Workaround: Uses ReportID to filter input instead of raw hover distance values.\n\n" +
-            "Many tablets do not send raw hover distance but will send general pen detection strength readings which can be used to limit hover distance.\n\n" +
+            "Use ReportID Workaround: Uses ReportID to filter input instead of HoverDistance values.\n\n" +
+            "Many tablets do not send HoverDistance but will send general pen detection strength readings which can be used to limit hover distance.\n\n" +
             "(ReportID values can be found in the tablet debugger)")]
         public bool ReportID { set; get; }
     }
