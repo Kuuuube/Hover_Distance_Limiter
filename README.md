@@ -6,7 +6,7 @@ Limits minimum and maximum hover distance.
 
 **Minimum Hover Distance:** The minimum HoverDistance where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
 
-**Maximum Hover Distance:** The maximum HoverDistance where input is be sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
+**Maximum Hover Distance:** The maximum HoverDistance where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
 
 **Use ReportID Workaround:** Uses ReportID to filter input instead of raw hover distance values. Many tablets do not send raw hover distance but will send general pen detection strength readings which can be used to limit hover distance.
 
