@@ -8,13 +8,19 @@ Limits minimum and maximum hover distance.
 
 **Maximum Hover Distance:** The maximum `HoverDistance` where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
 
-**Use ReportID Workaround:** Uses `ReportID` to filter input instead of `HoverDistance` values. Many tablets do not send `HoverDistance` but will send general pen detection strength readings which can be used to limit hover distance.
+**Use ReportID Workaround:** Uses `ReportID` to filter input instead of `HoverDistance`. Many tablets do not send `HoverDistance` but will send general pen detection strength readings which can be used to limit hover distance.
+
+**Use Pressure Range Cutoff:** Uses `Pressure` to filter input along with either `HoverDistance` or `ReportID`.
+
+**Minimum Pressure:** The minimum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
+
+**Maximum Pressure:** The Maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
 <br>
 
-## How to find HoverDistance or ReportID:
+## How to find HoverDistance, ReportID or Pressure:
 - Open tablet debugger by going to `Tablets > Tablet debugger...`
 - Put your pen within detection range of your tablet
-- The `Tablet Report` box will show `HoverDistance` or `ReportID` which is the raw value for each.
+- The `Tablet Report` box will show `HoverDistance`, `ReportID` and `Pressure` which is the raw value for each.
 
-    (If a `HoverDistance` is not shown, your tablet is not compatible with the default filtering method. Enabling **Use ReportID Workaround** and using `ReportID` values can be used on some tablets which do not send `HoverDistance`.)
+    (If a `HoverDistance` is not shown, your tablet is not compatible with the default filtering method. Enabling **Use ReportID Workaround** and using `ReportID` can be used on some tablets which do not send `HoverDistance`.)
