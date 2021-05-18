@@ -1,4 +1,4 @@
-# Hover Distance Limiter Plugin for [OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver) [![Total Download Count](https://img.shields.io/github/downloads/Kuuuube/Hover_Distance_Limiter/total.svg)](https://github.com/Kuuuube/Hover_Distance_Limiter/releases/latest)
+# Hover Distance Limiter Plugin for [OpenTabletDriver](https://github.com/OpenTabletDriver/OpenTabletDriver) [![](https://img.shields.io/github/downloads/Kuuuube/Hover_Distance_Limiter/total.svg)](https://github.com/Kuuuube/Hover_Distance_Limiter/releases/latest)
 
 Limits minimum and maximum hover distance.
 
