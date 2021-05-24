@@ -77,7 +77,7 @@ namespace Hover_Distance_Limiter
 
         [BooleanProperty("Use Near Proximity Cutoff", ""), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Use Near Proximity Cutoff: Uses NearProximity flag in Wacom tablet reports to filter out unstable far range of hover.\n\n" +
+            "Use Near Proximity Cutoff: Uses NearProximity flag in Wacom tablet reports to filter out the unstable far range of hover where NearProximity is False.\n\n" +
             "(NearProximity can be found in the tablet debugger for supported tablets.)")]
         public bool NearProximity { set; get; }
 

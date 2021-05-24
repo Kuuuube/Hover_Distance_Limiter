@@ -10,7 +10,7 @@ Limits minimum and maximum hover distance.
 
 **Use ReportID Workaround:** Uses `ReportID` to filter input instead of `HoverDistance`. Many tablets do not send `HoverDistance` but will send general pen detection strength readings which can be used to limit hover distance.
 
-**Use Near Proximity Cutoff:** Uses `NearProximity` flag in Wacom tablet reports to filter out unstable far range of hover.
+**Use Near Proximity Cutoff:** Uses `NearProximity` flag in Wacom tablet reports to filter out the unstable far range of hover where `NearProximity` is `False`.
 
 **Use Pressure Range Cutoff:** Uses `Pressure` to filter input along with either `HoverDistance` or `ReportID`.
 
