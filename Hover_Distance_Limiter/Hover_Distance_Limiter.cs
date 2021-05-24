@@ -13,78 +13,44 @@ namespace Hover_Distance_Limiter
             if (!ReportID)
             {
                 if (input is IProximityReport tabletReport)
-                {
-                    if (tabletReport.HoverDistance >= Hover_min && tabletReport.HoverDistance <= Hover_max)
-                    {
-                        return input;
-                    }
-                    else
-                    {
+                    if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max)
                         return null;
-                    }
-                }
-                else
-                {
-                    return input;
-                }
             }
             else
             {
                 if (input is ITabletReport tabletReport)
-                {
-                    if (tabletReport.ReportID >= Hover_min && tabletReport.ReportID <= Hover_max)
-                    {
-                        return input;
-                    }
-                    else
-                    {
+                    if (tabletReport.ReportID < Hover_min | tabletReport.ReportID > Hover_max)
                         return null;
-                    }
-                }
-                else
-                {
-                    return input;
-                }
             }
+            return input;
+        }
+
+        public IDeviceReport Near_Proximity(IDeviceReport input)
+        {
+            if (NearProximity && input is IProximityReport tabletReport)
+                if (tabletReport.NearProximity == false)
+                    return null;
+            return input;
         }
 
         public IDeviceReport Pressure_Cutoff(IDeviceReport input)
         {
-            if (Pressure)
-            {
-                if (input is ITabletReport tabletReport)
-                {
-                    if (tabletReport.Pressure >= Pressure_min && tabletReport.Pressure <= Pressure_max)
-                    {
-                        return input;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    return input;
-                }
-            }
-            else
-            {
-                return input;
-            }
+            if (Pressure && input is ITabletReport tabletReport)
+                if (tabletReport.Pressure < Pressure_min | tabletReport.Pressure > Pressure_max)
+                    return null;
+            return input;
         }
 
         public event Action<IDeviceReport> Emit;
 
         public void Consume(IDeviceReport value)
         {
-            IDeviceReport report = Filter(value);
-            value = report;
+            var report = Pressure_Cutoff(value);
+            report = Near_Proximity(report);
+            report = Hover_Distance(report);
 
-            Emit?.Invoke(value);
+            Emit?.Invoke(report);
         }
-
-        public IDeviceReport Filter(IDeviceReport input) => Hover_Distance(Pressure_Cutoff(input));
 
         public PipelinePosition Position => PipelinePosition.PreTransform;
 
@@ -108,6 +74,12 @@ namespace Hover_Distance_Limiter
             "Many tablets do not send HoverDistance but will send general pen detection strength readings which can be used to limit hover distance.\n\n" +
             "(ReportID can be found in the tablet debugger)")]
         public bool ReportID { set; get; }
+
+        [BooleanProperty("Use Near Proximity Cutoff", ""), ToolTip
+            ("Hover Distance Limiter:\n\n" +
+            "Use Near Proximity Cutoff: Uses NearProximity flag in Wacom tablet reports to filter out the unstable far range of hover where NearProximity is False.\n\n" +
+            "(NearProximity can be found in the tablet debugger for supported tablets.)")]
+        public bool NearProximity { set; get; }
 
         [BooleanProperty("Use Pressure Range Cutoff", ""), ToolTip
             ("Hover Distance Limiter:\n\n" +
