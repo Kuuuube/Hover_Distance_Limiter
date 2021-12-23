@@ -10,18 +10,9 @@ namespace Hover_Distance_Limiter
     {
         public IDeviceReport Hover_Distance(IDeviceReport input)
         {
-            if (!ReportID)
-            {
-                if (input is IProximityReport tabletReport)
-                    if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max)
-                        return null;
-            }
-            else
-            {
-                if (input is ITabletReport tabletReport)
-                    if (tabletReport.ReportID < Hover_min | tabletReport.ReportID > Hover_max)
-                        return null;
-            }
+            if (input is IProximityReport tabletReport)
+                if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max)
+                    return null;
             return input;
         }
 
@@ -56,24 +47,15 @@ namespace Hover_Distance_Limiter
 
         [Property("Minimum Hover Distance"), DefaultPropertyValue(0f), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Minimum Hover Distance: The minimum HoverDistance where input is sent.\n" +
-            "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
-            "(HoverDistance and ReportID can be found in the tablet debugger for supported tablets.)")]
+            "Minimum Hover Distance: The minimum HoverDistance where input is sent.\n\n" +
+            "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
         public float Hover_min { set; get; }
 
         [Property("Maximum Hover Distance"), DefaultPropertyValue(63f), ToolTip
             ("Hover Distance Limiter:\n\n" +
-            "Maximum Hover Distance: The maximum HoverDistance where input is sent.\n" +
-            "(When Use ReportID Workaround is enabled, ReportID is used.)\n\n" +
-            "(HoverDistance and ReportID can be found in the tablet debugger for supported tablets.)")]
+            "Maximum Hover Distance: The maximum HoverDistance where input is sent.\n\n" +
+            "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
         public float Hover_max { set; get; }
-
-        [BooleanProperty("Use ReportID Workaround", ""), ToolTip
-            ("Hover Distance Limiter:\n\n" +
-            "Use ReportID Workaround: Uses ReportID to filter input instead of HoverDistance.\n\n" +
-            "Many tablets do not send HoverDistance but will send general pen detection strength readings which can be used to limit hover distance.\n\n" +
-            "(ReportID can be found in the tablet debugger)")]
-        public bool ReportID { set; get; }
 
         [BooleanProperty("Use Near Proximity Cutoff", ""), ToolTip
             ("Hover Distance Limiter:\n\n" +

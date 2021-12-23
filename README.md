@@ -4,11 +4,9 @@ Limits minimum and maximum hover distance.
 
 ## Explanation of the values:
 
-**Minimum Hover Distance:** The minimum `HoverDistance` where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
+**Minimum Hover Distance:** The minimum `HoverDistance` where input is sent.
 
-**Maximum Hover Distance:** The maximum `HoverDistance` where input is sent. (When **Use ReportID Workaround** is enabled, ReportID is used.)
-
-**Use ReportID Workaround:** Uses `ReportID` to filter input instead of `HoverDistance`. Many tablets do not send `HoverDistance` but will send general pen detection strength readings which can be used to limit hover distance.
+**Maximum Hover Distance:** The maximum `HoverDistance` where input is sent.
 
 **Use Near Proximity Cutoff:** Uses `NearProximity` flag in Wacom tablet reports to filter out the unstable far range of hover where `NearProximity` is `False`.
 
