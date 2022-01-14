@@ -10,7 +10,7 @@ Limits minimum and maximum hover distance.
 
 **Use Near Proximity Cutoff:** Uses `NearProximity` flag in Wacom tablet reports to filter out the unstable far range of hover where `NearProximity` is `False`.
 
-**Use Pressure Range Cutoff:** Uses `Pressure` to filter input along with either `HoverDistance` or `ReportID`.
+**Use Pressure Range Cutoff:** Uses `Pressure` to filter input in addition to `HoverDistance`.
 
 **Minimum Pressure:** The minimum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
@@ -18,9 +18,9 @@ Limits minimum and maximum hover distance.
 
 <br>
 
-## How to find HoverDistance, ReportID or Pressure:
+## How to find HoverDistance, or Pressure:
 - Open tablet debugger by going to `Tablets > Tablet debugger...`
 - Put your pen within detection range of your tablet
-- The `Tablet Report` box will show `HoverDistance`, `ReportID` and `Pressure` which is the raw value for each.
+- The `Tablet Report` box will show the raw values for `HoverDistance`, and `Pressure`.
 
-    (If a `HoverDistance` is not shown, your tablet is not compatible with the default filtering method. Enabling **Use ReportID Workaround** and using `ReportID` can be used on some tablets which do not send `HoverDistance`.)
+    `HoverDistance` will not show on all tablets. If this is the case for your tablet then `HoverDistance` is not supported.
