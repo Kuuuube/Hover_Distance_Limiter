@@ -51,7 +51,7 @@ namespace Hover_Distance_Limiter
             "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
         public float Hover_min { set; get; }
 
-        [Property("Maximum Hover Distance"), DefaultPropertyValue(63f), ToolTip
+        [Property("Maximum Hover Distance"), DefaultPropertyValue(255f), ToolTip
             ("Hover Distance Limiter:\n\n" +
             "Maximum Hover Distance: The maximum HoverDistance where input is sent.\n\n" +
             "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
