@@ -16,8 +16,6 @@ Limits minimum and maximum hover distance.
 
 **Maximum Pressure:** The Maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
-<br>
-
 ## How to find HoverDistance or Pressure:
 - Open tablet debugger by going to `Tablets > Tablet debugger...`
 - Put your pen within detection range of your tablet
