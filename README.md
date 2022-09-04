@@ -14,7 +14,7 @@ Limits minimum and maximum hover distance.
 
 **Minimum Pressure:** The minimum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
-**Maximum Pressure:** The Maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
+**Maximum Pressure:** The maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
 **Remove Pen Reports:** Uses `Eraser` flag to filter out reports where `Eraser` is `False`.
 
