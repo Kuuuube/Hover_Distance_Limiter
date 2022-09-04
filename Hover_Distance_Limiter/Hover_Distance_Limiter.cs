@@ -32,13 +32,27 @@ namespace Hover_Distance_Limiter
             return input;
         }
 
+        public IDeviceReport Remove_Eraser(IDeviceReport input)
+        {
+            if (Eraser && input is IEraserReport tabletReport)
+                if (tabletReport.Eraser == true)
+                    return null;
+            return input;
+        }
+
+        public IDeviceReport Remove_Pen(IDeviceReport input)
+        {
+            if (Pen && input is IEraserReport tabletReport)
+                if (tabletReport.Eraser == false)
+                    return null;
+            return input;
+        }
+
         public event Action<IDeviceReport> Emit;
 
         public void Consume(IDeviceReport value)
         {
-            var report = Pressure_Cutoff(value);
-            report = Near_Proximity(report);
-            report = Hover_Distance(report);
+            var report = Remove_Pen(Remove_Eraser(Hover_Distance(Near_Proximity(Pressure_Cutoff(value)))));
 
             Emit?.Invoke(report);
         }
@@ -82,5 +96,17 @@ namespace Hover_Distance_Limiter
             "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
             "(Pressure can be found in the tablet debugger.)")]
         public float Pressure_max { set; get; }
+
+        [BooleanProperty("Remove Eraser Reports", ""), ToolTip
+            ("Hover Distance Limiter:\n\n" +
+            "Remove Eraser Reports: Uses Eraser flag to filter out reports where Eraser is True.\n\n" +
+            "(Eraser can be found in the tablet debugger for supported tablets.)")]
+        public bool Eraser { set; get; }
+
+        [BooleanProperty("Remove Pen Reports", ""), ToolTip
+            ("Hover Distance Limiter:\n\n" +
+            "Remove Pen Reports: Uses Eraser flag to filter out reports where Eraser is False.\n\n" +
+            "(Eraser can be found in the tablet debugger for supported tablets.)")]
+        public bool Pen { set; get; }
     }
 }

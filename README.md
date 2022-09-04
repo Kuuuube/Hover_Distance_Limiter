@@ -16,6 +16,10 @@ Limits minimum and maximum hover distance.
 
 **Maximum Pressure:** The Maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
+**Remove Pen Reports:** Uses `Eraser` flag to filter out reports where `Eraser` is `False`.
+
+**Remove Eraser Reports:** Uses `Eraser` flag to filter out reports where `Eraser` is `True`.
+
 ## How to find HoverDistance or Pressure:
 - Open tablet debugger by going to `Tablets > Tablet debugger...`
 - Put your pen within detection range of your tablet
