@@ -2,7 +2,7 @@
 
 Limits minimum and maximum hover distance.
 
-## Explanation of the values:
+## Hover Distance Limiter:
 
 **Minimum Hover Distance:** The minimum `HoverDistance` where input is sent.
 
