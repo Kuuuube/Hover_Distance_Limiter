@@ -103,14 +103,12 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
     [Property("Minimum Pressure"), DefaultPropertyValue(0), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Minimum Pressure: The minimum Pressure where input is sent.\n\n" +
-        "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
         "(Pressure can be found in the tablet debugger.)")]
     public int Pressure_min { set; get; }
 
     [Property("Maximum Pressure"), DefaultPropertyValue(16384), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Maximum Pressure: The maximum Pressure where input is sent.\n\n" +
-        "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
         "(Pressure can be found in the tablet debugger.)")]
     public int Pressure_max { set; get; }
 
