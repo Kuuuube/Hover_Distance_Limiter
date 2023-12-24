@@ -82,17 +82,17 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
 
     public PipelinePosition Position => PipelinePosition.PostTransform;
 
-    [Property("Minimum Hover Distance"), DefaultPropertyValue(0f), ToolTip
+    [Property("Minimum Hover Distance"), DefaultPropertyValue(0), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Minimum Hover Distance: The minimum HoverDistance where input is sent.\n\n" +
         "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
-    public float Hover_min { set; get; }
+    public int Hover_min { set; get; }
 
-    [Property("Maximum Hover Distance"), DefaultPropertyValue(255f), ToolTip
+    [Property("Maximum Hover Distance"), DefaultPropertyValue(255), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Maximum Hover Distance: The maximum HoverDistance where input is sent.\n\n" +
         "(HoverDistance can be found in the tablet debugger for supported tablets.)")]
-    public float Hover_max { set; get; }
+    public int Hover_max { set; get; }
 
     [BooleanProperty("Use Near Proximity Cutoff", ""), ToolTip
         ("Hover Distance Limiter:\n\n" +
@@ -100,19 +100,19 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
         "(NearProximity can be found in the tablet debugger for supported tablets.)")]
     public bool NearProximity { set; get; }
 
-    [Property("Minimum Pressure"), DefaultPropertyValue(0f), ToolTip
+    [Property("Minimum Pressure"), DefaultPropertyValue(0), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Minimum Pressure: The minimum Pressure where input is sent.\n\n" +
         "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
         "(Pressure can be found in the tablet debugger.)")]
-    public float Pressure_min { set; get; }
+    public int Pressure_min { set; get; }
 
-    [Property("Maximum Pressure"), DefaultPropertyValue(16384f), ToolTip
+    [Property("Maximum Pressure"), DefaultPropertyValue(16384), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Maximum Pressure: The maximum Pressure where input is sent.\n\n" +
         "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
         "(Pressure can be found in the tablet debugger.)")]
-    public float Pressure_max { set; get; }
+    public int Pressure_max { set; get; }
 
     [BooleanProperty("Remove Pen Reports", ""), ToolTip
         ("Hover Distance Limiter:\n\n" +
