@@ -10,41 +10,51 @@ namespace Hover_Distance_Limiter
     {
         public IDeviceReport Hover_Distance(IDeviceReport input)
         {
-            if (input is IProximityReport tabletReport)
-                if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max)
+            if (input is IProximityReport tabletReport) {
+                if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max) {
                     return null;
+                }
+            }
             return input;
         }
 
         public IDeviceReport Near_Proximity(IDeviceReport input)
         {
-            if (NearProximity && input is IProximityReport tabletReport)
-                if (tabletReport.NearProximity == false)
+            if (NearProximity && input is IProximityReport tabletReport) {
+                if (tabletReport.NearProximity == false) {
                     return null;
+                }
+            }
             return input;
         }
 
         public IDeviceReport Pressure_Cutoff(IDeviceReport input)
         {
-            if (Pressure && input is ITabletReport tabletReport)
-                if (tabletReport.Pressure < Pressure_min | tabletReport.Pressure > Pressure_max)
+            if (Pressure && input is ITabletReport tabletReport) {
+                if (tabletReport.Pressure < Pressure_min | tabletReport.Pressure > Pressure_max) {
                     return null;
+                }
+            }
             return input;
         }
 
         public IDeviceReport Remove_Pen(IDeviceReport input)
         {
-            if (Pen && input is IEraserReport tabletReport)
-                if (tabletReport.Eraser == false)
+            if (Pen && input is IEraserReport tabletReport) {
+                if (tabletReport.Eraser == false) {
                     return null;
+                }
+            }
             return input;
         }
 
         public IDeviceReport Remove_Eraser(IDeviceReport input)
         {
-            if (Eraser && input is IEraserReport tabletReport)
-                if (tabletReport.Eraser == true)
+            if (Eraser && input is IEraserReport tabletReport) {
+                if (tabletReport.Eraser == true) {
                     return null;
+                }
+            }
             return input;
         }
 
