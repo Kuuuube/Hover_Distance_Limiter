@@ -63,8 +63,9 @@ namespace Hover_Distance_Limiter
         public void Consume(IDeviceReport value)
         {
             var report = Remove_Eraser(Remove_Pen(Hover_Distance(Near_Proximity(Pressure_Cutoff(value)))));
-
-            Emit?.Invoke(report);
+            if (report != null) {
+                Emit?.Invoke(report);
+            }
         }
 
         public PipelinePosition Position => PipelinePosition.PreTransform;
