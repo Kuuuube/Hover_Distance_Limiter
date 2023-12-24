@@ -10,8 +10,6 @@ Limits minimum and maximum hover distance.
 
 **Use Near Proximity Cutoff:** Uses the `NearProximity` flag in Wacom tablet reports to filter out the range of hover where `NearProximity` is `False`.
 
-**Use Pressure Range Cutoff:** Uses `Pressure` to filter input in addition to `HoverDistance`.
-
 **Minimum Pressure:** The minimum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)
 
 **Maximum Pressure:** The maximum `Pressure` where input is sent. (Only used when **Use Pressure Range Cutoff** is enabled.)

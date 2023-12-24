@@ -34,7 +34,7 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
 
     public IDeviceReport Pressure_Cutoff(IDeviceReport input)
     {
-        if (Pressure && input is ITabletReport tabletReport) {
+        if (input is ITabletReport tabletReport) {
             if (tabletReport.Pressure < Pressure_min | tabletReport.Pressure > Pressure_max) {
                 return null;
             }
@@ -100,12 +100,6 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
         "(NearProximity can be found in the tablet debugger for supported tablets.)")]
     public bool NearProximity { set; get; }
 
-    [BooleanProperty("Use Pressure Range Cutoff", ""), ToolTip
-        ("Hover Distance Limiter:\n\n" +
-        "Use Pressure Range Cutoff: Uses Pressure to filter input along with either HoverDistance or ReportID.\n\n" +
-        "(Pressure can be found in the tablet debugger)")]
-    public bool Pressure { set; get; }
-
     [Property("Minimum Pressure"), DefaultPropertyValue(0f), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Minimum Pressure: The minimum Pressure where input is sent.\n\n" +
@@ -113,7 +107,7 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
         "(Pressure can be found in the tablet debugger.)")]
     public float Pressure_min { set; get; }
 
-    [Property("Maximum Pressure"), DefaultPropertyValue(8192f), ToolTip
+    [Property("Maximum Pressure"), DefaultPropertyValue(16384f), ToolTip
         ("Hover Distance Limiter:\n\n" +
         "Maximum Pressure: The maximum Pressure where input is sent.\n\n" +
         "(Only used when Use Pressure Range Cutoff is enabled.)\n" +
