@@ -16,6 +16,11 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
     {
         if (input is IProximityReport tabletReport) {
             if (tabletReport.HoverDistance < Hover_min | tabletReport.HoverDistance > Hover_max) {
+                if (OniCadoThing && input is ITabletReport tabletReport1)
+                {
+                    tabletReport1.Pressure = 0;
+                    return tabletReport1;
+                }
                 return null;
             }
         }
@@ -123,6 +128,9 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
         "Remove Eraser Reports: Uses Eraser flag to filter out reports where Eraser is True.\n\n" +
         "(Eraser can be found in the tablet debugger for supported tablets.)")]
     public bool Eraser { set; get; }
+
+    [BooleanProperty("OniCado thing", "")]
+    public bool OniCadoThing { set; get; }
 
     [Resolved]
     public IDriver driver;
