@@ -80,7 +80,7 @@ public class Hover_Distance_Limiter : IPositionedPipelineElement<IDeviceReport>
         Emit?.Invoke(report);
     }
 
-    public PipelinePosition Position => PipelinePosition.PostTransform;
+    public PipelinePosition Position => PipelinePosition.Internal;
 
     [Property("Minimum Hover Distance"), DefaultPropertyValue(0), ToolTip
         ("Hover Distance Limiter:\n\n" +
